@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "@hookform/error-message";
 import * as yup from "yup";
+import { getUserData } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 interface IFormInput {
   tipoDoc: string;
@@ -30,6 +32,8 @@ const schema = yup
   .required();
 
 function SeguroSaludFlexible() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -45,7 +49,12 @@ function SeguroSaludFlexible() {
     },
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    console.log(data);
+    const userData = await getUserData();
+    console.log(userData);
+    navigate("/planes");
+  };
 
   return (
     <section className="seguro__salud">
@@ -60,7 +69,6 @@ function SeguroSaludFlexible() {
             </span>
             <div className="seguro__salud__content__right__description">
               <h1>Creado para ti y tu familia</h1>
-              <hr />
               <p>
                 Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe
                 nuestra asesoría. 100% online.

@@ -1,0 +1,136 @@
+.card__plan {
+  display: flex;
+  flex-direction: column;
+  width: 288px;
+  height: 687px;
+  padding: 68px 32px 48px 32px;
+  border-radius: 24px;
+  gap: 24px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 32px 0px #AEACF359;
+  justify-content: space-between;
+
+  &-promo {
+    padding: 40px 32px 48px 32px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__promocion {
+      width: 122px;
+      height: 20px;
+    }
+
+    &__divider {
+      border: 1px solid #D7DBF5;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .header__content {
+        display: flex;
+        justify-content: space-between;
+  
+        .header {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+  
+          &__title {
+            font-family: Lato;
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 32px;
+            letter-spacing: -0.2px;
+            text-align: left;
+          }
+  
+          &__costo {
+            height: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+  
+            &__title {
+              font-family: Lato;
+              font-size: 12px;
+              font-weight: 900;
+              line-height: 16px;
+              letter-spacing: 0.6px;
+              text-align: left;
+              color: #7981B2;
+            }
+  
+            &__costo {
+              font-family: Lato;
+              font-size: 20px;
+              font-weight: 900;
+              line-height: 28px;
+              letter-spacing: -0.2px;
+              text-align: left;
+            }
+          }
+      
+          &__img {
+            width: 56px;
+            height: 56px;
+          }
+        }
+    
+      }
+    }
+
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 419px;
+
+    &__beneficios {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+
+      .beneficios__description {
+        margin-left: 18px;
+        font-family: Lato;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: 0.10000000149011612px;
+        text-align: left;
+      }
+    }
+  
+    &__button {
+      width: 224px;
+      height: 48px;
+      padding: 14px 32px 14px 32px;
+      border-radius: 32px;
+      background: #FF1C44;
+      outline: none;
+      border: 0;
+      &__text {
+        font-family: Lato;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: white;
+      }
+
+    }
+  }
+
+}

@@ -1,0 +1,50 @@
+.stepper {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  font-weight: 400;
+  font-family: "lato";
+  background: #EDEFFC;
+  height: 56px;
+  padding: 16px 0;
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    color: #7981B2;
+  }
+
+  &__circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 1px solid #7981B2;
+
+    &-active {
+      border: 0;
+      background: #4F4FFF;
+      color: white;
+    }
+  }
+
+  &__number {
+    display: inline-block; 
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    
+    &-active {
+      color: $grey-100;
+      font-weight: 700;
+    }
+  }
+}

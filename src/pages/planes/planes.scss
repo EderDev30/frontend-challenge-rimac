@@ -1,0 +1,58 @@
+.planes {
+  position: relative;
+  height: 100%;
+  padding-top: 60px;
+
+  &__content {
+    padding: 0 96px;
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 56px;
+      gap: 32px;
+
+      &__title {
+        max-width: 540px;
+        height: 132px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+  
+        h1 {
+          font-family: Lato;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 48px;
+          letter-spacing: -0.6000000238418579px;
+          text-align: center;
+        }
+  
+        p {
+          font-family: Lato;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 28px;
+          letter-spacing: 0.10000000149011612px;
+          text-align: center;
+        }
+      }
+    }
+
+    &__planes {
+      display: flex;
+      gap: 32px;
+      margin-top: 20px;
+      margin-bottom: 80px;
+    }
+
+  }
+
+  &__header {
+    background: #EDEFFC;
+    height: 56px;
+    padding: 16px 0;
+  }
+}

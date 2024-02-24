@@ -19,11 +19,22 @@
   src: url("./assets/fonts/BRSonoma-Bold.otf") format('opentype');
 }
 
-* {
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "BR Sonoma", Arial, sans-serif;
+}
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+	margin: 0;
 }
 
 #root {
