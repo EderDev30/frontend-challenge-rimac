@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'BR Sonoma';
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/BRSonoma-Regular.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'BR Sonoma';
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/BRSonoma-SemiBold.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'BR Sonoma';
+  font-style: normal;
+  font-weight: bold;
+  src: url("./assets/fonts/BRSonoma-Bold.otf") format('opentype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "BR Sonoma", Arial, sans-serif;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  min-width: 336px;
+  padding: 0 32px;
+
+  @include device-md-up {
+    max-width: 1100px;
+    padding: 0 32px;
+  }
+}
+
+select, input{
+  border: 0;
+  background: none;
+}
+
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}

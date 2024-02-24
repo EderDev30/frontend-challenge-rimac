@@ -1,0 +1,50 @@
+.layout__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  position: absolute;
+  
+  @include device-md-up {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &__right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &__message {
+      display: none;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+      color: $grey-100;
+    }
+
+    &__phoneicon {
+      padding: 1px;
+    }
+
+    div {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__phonenumber {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 20px;
+      letter-spacing: 0.4px;
+      color: $grey-100;
+    }
+
+    @include device-md-up {
+      &__message {
+        display: block;
+      }
+    }
+  }
+}
