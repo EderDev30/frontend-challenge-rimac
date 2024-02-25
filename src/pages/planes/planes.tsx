@@ -17,6 +17,7 @@ function Planes() {
   const [enableRight, setEnableRight] = useState(true);
   const [enableLeft, setEnableLeft] = useState(false);
   const totalPagination = 3;
+  const route = "/";
 
   useEffect(() => {
     setEnableRight(counter < 3);
@@ -48,10 +49,10 @@ function Planes() {
   return (
     <section className="planes">
       <Stepper step={1} />
-      <StepperProgress step={1} progress={50} />
+      <StepperProgress route={route} step={1} progress={50} />
       <div className="container">
         <div className="planes__content">
-          <BackButton route="/" />
+          <BackButton route={route} />
           <div className="planes__content__info">
             <div className="planes__content__info__title">
               <h1>Rocío ¿Para quién deseas cotizar?</h1>
