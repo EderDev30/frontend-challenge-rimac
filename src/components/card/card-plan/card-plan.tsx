@@ -6,7 +6,7 @@ type Props = {
   id: number;
   titulo: string;
   icon: string;
-  beneficios: React.ReactElement[];
+  beneficios: string[];
   precioPlan: number;
   recomendado?: boolean;
   selectedOption: number;

@@ -10,15 +10,24 @@ import "./planes.scss";
 import { useEffect, useState } from "react";
 import ControlArrow from "../../components/control-arrow/control-arrow";
 import StepperProgress from "../../components/stepper/stepper-progress";
+import { getPlanes } from "../../services/api";
+import { IPlan } from "../../types";
 
 function Planes() {
   const [selectedOption, setSelectedOption] = useState(0);
   const [counter, setCounter] = useState(1);
   const [enableRight, setEnableRight] = useState(true);
   const [enableLeft, setEnableLeft] = useState(false);
+  const [planesList, setPlanesList] = useState<IPlan[]>([]);
   const totalPagination = 3;
   const route = "/";
 
+  // Get Planes
+  useEffect(() => {
+    getPlanes().then((data) => setPlanesList(data));
+  }, []);
+
+  // Planes Slider
   useEffect(() => {
     setEnableRight(counter < 3);
     setEnableLeft(counter > 1);
@@ -31,6 +40,7 @@ function Planes() {
     });
   }, [counter]);
 
+  // Reset planes slider position
   useEffect(() => {
     if (counter === 1) {
       const contentPlanes = document.querySelector(".planes__content__planes");
@@ -80,71 +90,20 @@ function Planes() {
           {selectedOption !== 0 ? (
             <>
               <div className="planes__content__planes">
-                <CardPlan
-                  selectedOption={selectedOption}
-                  id={1}
-                  titulo="Plan en Casa"
-                  icon={HomeLight}
-                  precioPlan={39}
-                  beneficios={[
-                    <span>
-                      <strong>Médico general a domicilio</strong> por S/20 y
-                      medicinas cubiertas al 100%.
-                    </span>,
-                    <span>
-                      <strong>Videoconsulta</strong> y orientación telefónica al
-                      100% en medicina general + pediatría.
-                    </span>,
-                    <span>
-                      <strong>Indemnización</strong> de S/300 en caso de
-                      hospitalización por más de un día."
-                    </span>,
-                  ]}
-                />
-                <CardPlan
-                  selectedOption={selectedOption}
-                  id={2}
-                  titulo="Plan en Casa y Clínica"
-                  recomendado={true}
-                  icon={HospitalLight}
-                  precioPlan={99}
-                  beneficios={[
-                    <span>
-                      <strong>Consultas en clínica</strong> para cualquier
-                      especialidad.
-                    </span>,
-                    <span>
-                      <strong>Medicinas y exámenes</strong> derivados cubiertos
-                      al 80%
-                    </span>,
-                    <span>
-                      Atención médica en{" "}
-                      <strong>más de 200 clínicas del país.</strong>
-                    </span>,
-                  ]}
-                />
-                <CardPlan
-                  selectedOption={selectedOption}
-                  id={3}
-                  titulo="Plan en Casa + Chequeo"
-                  icon={HomeLight}
-                  precioPlan={49}
-                  beneficios={[
-                    <span>
-                      <strong>Un Chequeo preventivo general</strong> de manera
-                      presencial o virtual.
-                    </span>,
-                    <span>
-                      Acceso a <strong>Vacunas</strong> en el Programa del MINSA
-                      en centros privados.
-                    </span>,
-                    <span>
-                      <strong>
-                        Incluye todos los beneficios del Plan en Casa.
-                      </strong>
-                    </span>,
-                  ]}
-                />
+                {planesList.map((plan, index) => {
+                  return (
+                    <CardPlan
+                      key={index}
+                      selectedOption={selectedOption}
+                      id={index}
+                      titulo={plan.name}
+                      icon={index === 1 ? HospitalLight : HomeLight}
+                      precioPlan={plan.price}
+                      beneficios={plan.description}
+                      recomendado={index === 1}
+                    />
+                  );
+                })}
               </div>
               <div className="planes__content__planes__control">
                 <span
