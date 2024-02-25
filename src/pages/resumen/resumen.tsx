@@ -29,7 +29,7 @@ function Resumen() {
                 <span className="card__header__title">
                   <img src={FamilyIcon} alt="family icon" />
                   <span className="card__header__title__text">
-                    {`${user.name} ${user.lastName}`}
+                    {`${user?.name} ${user?.lastName}`}
                   </span>
                 </span>
               </div>
@@ -38,17 +38,17 @@ function Resumen() {
                 <span className="card__content__title">
                   Responsable de pago
                 </span>
-                <span className="card__content__text">{`${user.typeDoc}: ${user.nroDoc}`}</span>
+                <span className="card__content__text">{`${user?.typeDoc}: ${user?.nroDoc}`}</span>
                 <span className="card__content__text">
-                  Celular: {user.phone}
+                  Celular: {user?.phone}
                 </span>
               </div>
               <div className="card__content">
                 {" "}
                 <span className="card__content__title">Plan elegido</span>
-                <span className="card__content__text">{user.plan.name}</span>
+                <span className="card__content__text">{user?.plan.name}</span>
                 <span className="card__content__text">
-                  {` Costo del Plan: $${user.plan.price} al mes`}
+                  {` Costo del Plan: $${user?.plan.price} al mes`}
                 </span>
               </div>
             </div>
