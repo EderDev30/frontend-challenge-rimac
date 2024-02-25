@@ -80,6 +80,7 @@ function Planes() {
             <>
               <div className="planes__content__planes">
                 <CardPlan
+                  selectedOption={selectedOption}
                   id={1}
                   titulo="Plan en Casa"
                   icon={HomeLight}
@@ -100,6 +101,7 @@ function Planes() {
                   ]}
                 />
                 <CardPlan
+                  selectedOption={selectedOption}
                   id={2}
                   titulo="Plan en Casa y Clínica"
                   recomendado={true}
@@ -121,6 +123,7 @@ function Planes() {
                   ]}
                 />
                 <CardPlan
+                  selectedOption={selectedOption}
                   id={3}
                   titulo="Plan en Casa + Chequeo"
                   icon={HomeLight}

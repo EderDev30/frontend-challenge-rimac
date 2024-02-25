@@ -52,7 +52,6 @@
           }
   
           &__costo {
-            height: 48px;
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -67,13 +66,24 @@
               color: #7981B2;
             }
   
-            &__costo {
+            &__precio{
               font-family: Lato;
               font-size: 20px;
               font-weight: 900;
               line-height: 28px;
               letter-spacing: -0.2px;
               text-align: left;
+
+              &__dscto { 
+                font-family: Lato;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: -0.2px;
+                text-align: left;
+                color: #7981B2;
+                text-decoration: line-through;
+              }
             }
           }
       

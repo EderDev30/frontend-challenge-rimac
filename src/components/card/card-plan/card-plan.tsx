@@ -9,6 +9,7 @@ type Props = {
   beneficios: React.ReactElement[];
   precioPlan: number;
   recomendado?: boolean;
+  selectedOption: number;
 };
 function CardPlan({
   id,
@@ -17,8 +18,11 @@ function CardPlan({
   beneficios,
   precioPlan,
   recomendado = false,
+  selectedOption,
 }: Props) {
   const navigate = useNavigate();
+  const dscto = 0.05;
+  const newPrecio = precioPlan * (1 - dscto);
 
   function handleOnClick() {
     console.log(id);
@@ -41,8 +45,15 @@ function CardPlan({
               <span className="header__title">{titulo}</span>
               <div className="header__costo">
                 <span className="header__costo__title">Costo del plan</span>
+                {selectedOption === 2 ? (
+                  <span className="header__costo__precio__dscto">
+                    ${precioPlan} al mes
+                  </span>
+                ) : (
+                  <></>
+                )}
                 <span className="header__costo__precio">
-                  ${precioPlan} al mes
+                  ${selectedOption === 2 ? newPrecio : precioPlan} al mes
                 </span>
               </div>
             </div>
