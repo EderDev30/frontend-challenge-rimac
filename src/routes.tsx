@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import SeguroSaludFlexible from "./pages/seguro-salud-flexible/seguro-salud-flexible";
 import Layout from "./layout/layout";
 import Planes from "./pages/planes/planes";
+import Resumen from "./pages/resumen/resumen";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/planes",
         element: <Planes />,
+      },
+      {
+        path: "/resumen",
+        element: <Resumen />,
       },
     ],
   },

@@ -1,7 +1,9 @@
 import "./card-plan.scss";
 import TagPromotion from "../../../assets/tag-promotion.svg";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
+  id: number;
   titulo: string;
   icon: string;
   beneficios: React.ReactElement[];
@@ -9,12 +11,20 @@ type Props = {
   recomendado?: boolean;
 };
 function CardPlan({
+  id,
   titulo,
   icon,
   beneficios,
   precioPlan,
   recomendado = false,
 }: Props) {
+  const navigate = useNavigate();
+
+  function handleOnClick() {
+    console.log(id);
+    navigate("/resumen");
+  }
+
   return (
     <article className={`card__plan ${recomendado ? "card__plan-promo" : ""}`}>
       <div className="card__plan__header">
@@ -43,11 +53,13 @@ function CardPlan({
       </div>
       <div className="card__plan__info">
         <ul className="card__plan__info__beneficios">
-          {beneficios.map((beneficio) => (
-            <li className="beneficios__description">{beneficio}</li>
+          {beneficios.map((beneficio, index) => (
+            <li key={index} className="beneficios__description">
+              {beneficio}
+            </li>
           ))}
         </ul>
-        <button className="card__plan__info__button">
+        <button className="card__plan__info__button" onClick={handleOnClick}>
           <span className="card__plan__info__button__text">
             Seleccionar Plan
           </span>

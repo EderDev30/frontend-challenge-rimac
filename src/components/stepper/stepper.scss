@@ -1,5 +1,5 @@
 .stepper {
-  display: flex;
+  display: none;
   justify-content: center;
   gap: 16px;
   font-weight: 400;
@@ -7,6 +7,10 @@
   background: #EDEFFC;
   height: 56px;
   padding: 16px 0;
+
+  @include device-md-up {
+    display: flex;
+  }
 
   &__content {
     display: flex;

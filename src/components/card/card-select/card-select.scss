@@ -1,55 +1,76 @@
 .card__select {
-  display: flex;
-  gap: 32px;
-  height: 212px;
-  
   &__option {
     display: flex;
     flex-direction: column;
-    width: 256px;
+    // min-width: 336px;
     padding: 16px 24px 40px 24px;
     border-radius: 24px;
     background: #FFFFFF;
     box-shadow: 0px 1px 32px 0px #AEACF359;
     cursor: pointer;
-    border: 3px solid transparent;
+
+    @include device-md-up {
+      width: 256px;
+      height: 212px;
+    }
+    
 
     &__img {
       align-self: end;
     }
 
     &-selected {
-      border: 3px solid #03050F;
+      box-shadow: 0 0 0 3px inset $grey-100;
     }
   }
 
   &__info {
     display: flex;
     flex-direction: column;
-    height: 132px;
-    gap: 16px;
+    gap: 8px;
     align-items: start;
 
-    img {
-      height: 48px;
-      width: 48px;
+    @include device-md-up {
+      height: 132px;
+    }
+
+    &__img {
+      height: 32px;
+      width: 32px;
+
+      @include device-md-up {
+        height: 48px;
+        width: 48px;
+      }
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      @include device-md-up {
+        align-items: start;
+        flex-direction: column;
+        gap: 16px;
+      }
     }
 
     &__title {
       font-family: Lato;
-      font-size: 20px;
       font-weight: 900;
+      font-size: 20px;
       line-height: 28px;
-      letter-spacing: -0.20000000298023224px;
+      letter-spacing: -0.2px;
       text-align: left;
     }
 
     &__description {
       font-family: Lato;
-      font-size: 12px;
       font-weight: 400;
+      font-size: 12px;
       line-height: 20px;
-      letter-spacing: 0.20000000298023224px;
+      letter-spacing: 0.2px;
       text-align: left;
 
     }
