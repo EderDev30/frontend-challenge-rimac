@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import SeguroSaludFlexible from "./pages/seguro-salud-flexible/seguro-salud-flexible";
+import Login from "./pages/login/login";
 import Layout from "./layout/layout";
 import Planes from "./pages/planes/planes";
 import Resumen from "./pages/resumen/resumen";
@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <SeguroSaludFlexible />,
+        element: <Login />,
       },
     ],
   },

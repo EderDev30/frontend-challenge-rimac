@@ -1,4 +1,4 @@
-import "./seguro-salud-flexible.scss";
+import "./login.scss";
 import ImageSeguro from "../../assets/image-seguro.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -33,7 +33,7 @@ const schema = yup
   })
   .required();
 
-function SeguroSaludFlexible() {
+function Login() {
   const navigate = useNavigate();
   const { updateUser } = useUser();
 
@@ -66,17 +66,17 @@ function SeguroSaludFlexible() {
   };
 
   return (
-    <section className="seguro__salud">
-      <div className="seguro__salud__content container">
-        <div className="seguro__salud__content__left">
+    <section className="login">
+      <div className="login__content container">
+        <div className="login__content__left">
           <img src={ImageSeguro} alt="portada seguro salud" />
         </div>
-        <div className="seguro__salud__content__right">
-          <div className="seguro__salud__content__right__title">
-            <span className="seguro__salud__content__right__promo">
+        <div className="login__content__right">
+          <div className="login__content__right__title">
+            <span className="login__content__right__promo">
               Seguro Salud Flexible
             </span>
-            <div className="seguro__salud__content__right__description">
+            <div className="login__content__right__description">
               <h1>Creado para ti y tu familia</h1>
               <p>
                 Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe
@@ -85,10 +85,10 @@ function SeguroSaludFlexible() {
             </div>
           </div>
 
-          <div className="seguro__salud__content__right__title-mobile">
-            <div className="seguro__salud__content__right__title-mobile__header">
+          <div className="login__content__right__title-mobile">
+            <div className="login__content__right__title-mobile__header">
               <div>
-                <span className="seguro__salud__content__right__promo">
+                <span className="login__content__right__promo">
                   Seguro Salud Flexible
                 </span>
                 <h1>Creado para ti y tu familia</h1>
@@ -156,7 +156,7 @@ function SeguroSaludFlexible() {
                 )}
               />
             </div>
-            <div className="seguro__salud__content__right__legal">
+            <div className="login__content__right__legal">
               <label className={errors.politicaPrivacidad ? "is-invalid" : ""}>
                 <input type="checkbox" {...register("politicaPrivacidad")} />
                 Acepto lo Política de Privacidad
@@ -171,12 +171,12 @@ function SeguroSaludFlexible() {
           </form>
         </div>
       </div>
-      <div className="seguro__salud__blur">
-        <img className="seguro__salud__blur__left" />
-        <img className="seguro__salud__blur__right" />
+      <div className="login__blur">
+        <img className="login__blur__left" />
+        <img className="login__blur__right" />
       </div>
     </section>
   );
 }
 
-export default SeguroSaludFlexible;
+export default Login;
