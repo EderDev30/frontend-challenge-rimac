@@ -3,25 +3,12 @@ import Stepper from "../../components/stepper/stepper";
 import StepperProgress from "../../components/stepper/stepper-progress";
 import FamilyIcon from "../../assets/family-icon.svg";
 import "./resumen.scss";
-
-import React from "react";
+import useUser from "../../hook/useUser";
 
 function Resumen() {
   const route = "/planes";
 
-  // TODO: obtener del useContext
-  const userInfo = {
-    name: "Rocío",
-    lastName: "Miranda Díaz",
-    birthDay: "02-04-1990",
-    celular: "5130216147",
-    dni: "30216147",
-  };
-
-  const planInfo = {
-    plan: "Plan en Casa y Clínica",
-    costo: 99,
-  };
+  const { user } = useUser();
 
   return (
     <section className="resumen">
@@ -42,7 +29,7 @@ function Resumen() {
                 <span className="card__header__title">
                   <img src={FamilyIcon} alt="family icon" />
                   <span className="card__header__title__text">
-                    {`${userInfo.name} ${userInfo.lastName}`}
+                    {`${user.name} ${user.lastName}`}
                   </span>
                 </span>
               </div>
@@ -51,17 +38,17 @@ function Resumen() {
                 <span className="card__content__title">
                   Responsable de pago
                 </span>
-                <span className="card__content__text">DNI: {userInfo.dni}</span>
+                <span className="card__content__text">{`${user.typeDoc}: ${user.nroDoc}`}</span>
                 <span className="card__content__text">
-                  Celular: {userInfo.celular}
+                  Celular: {user.phone}
                 </span>
               </div>
               <div className="card__content">
                 {" "}
                 <span className="card__content__title">Plan elegido</span>
-                <span className="card__content__text">{planInfo.plan}</span>
+                <span className="card__content__text">{user.plan.name}</span>
                 <span className="card__content__text">
-                  {` Costo del Plan: $${planInfo.costo} al mes`}
+                  {` Costo del Plan: $${user.plan.price} al mes`}
                 </span>
               </div>
             </div>

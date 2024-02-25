@@ -6,6 +6,8 @@ import { ErrorMessage } from "@hookform/error-message";
 import * as yup from "yup";
 import { getUserData } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import useUser from "../../hook/useUser";
+import { TypeDoc } from "../../types.d";
 
 interface IFormInput {
   tipoDoc: string;
@@ -33,6 +35,7 @@ const schema = yup
 
 function SeguroSaludFlexible() {
   const navigate = useNavigate();
+  const { updateUser } = useUser();
 
   const {
     register,
@@ -42,7 +45,7 @@ function SeguroSaludFlexible() {
     resolver: yupResolver(schema),
     defaultValues: {
       nroDoc: "",
-      tipoDoc: "DNI",
+      tipoDoc: TypeDoc.DNI,
       celular: "",
       politicaPrivacidad: false,
       politicaComercial: false,
@@ -50,9 +53,15 @@ function SeguroSaludFlexible() {
   });
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    console.log(data);
     const userData = await getUserData();
-    console.log(userData);
+    updateUser({
+      birthDay: userData.birthDay,
+      name: userData.name,
+      lastName: userData.lastName,
+      phone: data.celular,
+      nroDoc: data.nroDoc,
+      typeDoc: data.tipoDoc,
+    });
     navigate("/planes");
   };
 

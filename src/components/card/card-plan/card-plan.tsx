@@ -1,9 +1,9 @@
 import "./card-plan.scss";
 import TagPromotion from "../../../assets/tag-promotion.svg";
 import { useNavigate } from "react-router-dom";
+import useUser from "../../../hook/useUser";
 
 type Props = {
-  id: number;
   titulo: string;
   icon: string;
   beneficios: string[];
@@ -12,7 +12,6 @@ type Props = {
   selectedOption: number;
 };
 function CardPlan({
-  id,
   titulo,
   icon,
   beneficios,
@@ -20,12 +19,19 @@ function CardPlan({
   recomendado = false,
   selectedOption,
 }: Props) {
+  const { updateUser } = useUser();
   const navigate = useNavigate();
   const dscto = 0.05;
-  const newPrecio = precioPlan * (1 - dscto);
+  const priceDscto = precioPlan * (1 - dscto);
+  const newPrice = selectedOption === 2 ? priceDscto : precioPlan;
 
   function handleOnClick() {
-    console.log(id);
+    updateUser({
+      plan: {
+        name: titulo,
+        price: newPrice,
+      },
+    });
     navigate("/resumen");
   }
 
@@ -46,14 +52,14 @@ function CardPlan({
               <div className="header__costo">
                 <span className="header__costo__title">Costo del plan</span>
                 {selectedOption === 2 ? (
-                  <span className="header__costo__precio__dscto">
+                  <span className="header__costo__precio__sin__dscto">
                     ${precioPlan} al mes
                   </span>
                 ) : (
                   <></>
                 )}
                 <span className="header__costo__precio">
-                  ${selectedOption === 2 ? newPrecio : precioPlan} al mes
+                  ${newPrice} al mes
                 </span>
               </div>
             </div>

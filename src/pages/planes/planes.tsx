@@ -95,7 +95,6 @@ function Planes() {
                     <CardPlan
                       key={index}
                       selectedOption={selectedOption}
-                      id={index}
                       titulo={plan.name}
                       icon={index === 1 ? HospitalLight : HomeLight}
                       precioPlan={plan.price}
