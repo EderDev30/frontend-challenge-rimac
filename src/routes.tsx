@@ -3,6 +3,7 @@ import Login from "./pages/login/login";
 import Layout from "./layout/layout";
 import Planes from "./pages/planes/planes";
 import Resumen from "./pages/resumen/resumen";
+import ProtectedRoute from "./components/protected-route";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +20,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/planes",
-        element: <Planes />,
+        element: (
+          <ProtectedRoute>
+            <Planes />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/resumen",
-        element: <Resumen />,
+        element: (
+          <ProtectedRoute>
+            <Resumen />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

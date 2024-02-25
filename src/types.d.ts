@@ -1,6 +1,6 @@
 export enum TypeDoc {
   DNI = "DNI",
-  RNU = "RUC",
+  RUC = "RUC",
 }
 
 export interface IUserApi {

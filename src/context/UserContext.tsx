@@ -1,9 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { IUser, TypeDoc } from "../types.d";
 
 type TUserContext = {
-  user: IUser;
+  user: IUser | null;
   updateUser: (user: Partial<IUser>) => void;
+  resetUser: () => void;
 };
 
 const defaultUser: IUser = {
@@ -22,21 +23,43 @@ const defaultUser: IUser = {
 export const UserContext = createContext<TUserContext>({
   user: defaultUser,
   updateUser: () => {},
+  resetUser: () => {},
 });
 
+function getInitialState(): IUser {
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
+}
+
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<IUser>(defaultUser);
-  const updateUser = (newUser: Partial<IUser>) =>
-    setUser({
-      ...user,
-      ...newUser,
-    });
+  const [user, setUser] = useState<IUser | null>(getInitialState);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
+
+  const updateUser = (newUser: Partial<IUser>) => {
+    if (user) {
+      setUser({
+        ...user,
+        ...newUser,
+      });
+    } else {
+      setUser({
+        ...defaultUser,
+        ...newUser,
+      });
+    }
+  };
+
+  const resetUser = () => setUser(null);
 
   return (
     <UserContext.Provider
       value={{
         user,
         updateUser,
+        resetUser,
       }}
     >
       {children}

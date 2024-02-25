@@ -12,6 +12,7 @@ import ControlArrow from "../../components/control-arrow/control-arrow";
 import StepperProgress from "../../components/stepper/stepper-progress";
 import { getPlanes } from "../../services/api";
 import { IPlan } from "../../types";
+import useUser from "../../hook/useUser";
 
 function Planes() {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -21,9 +22,17 @@ function Planes() {
   const [planesList, setPlanesList] = useState<IPlan[]>([]);
   const totalPagination = 3;
   const route = "/";
+  const { updateUser } = useUser();
 
   // Get Planes
   useEffect(() => {
+    // reset plan
+    updateUser({
+      plan: {
+        name: "",
+        price: 0,
+      },
+    });
     getPlanes().then((data) => setPlanesList(data));
   }, []);
 

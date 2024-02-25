@@ -8,6 +8,7 @@ import { getUserData } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import useUser from "../../hook/useUser";
 import { TypeDoc } from "../../types.d";
+import { useEffect } from "react";
 
 interface IFormInput {
   tipoDoc: string;
@@ -19,9 +20,22 @@ interface IFormInput {
 
 const schema = yup
   .object({
-    nroDoc: yup.string().required("Nro de documento requerido"),
     tipoDoc: yup.string().required("Tipo de documento requerido"),
-    celular: yup.string().required("Celular requerido"),
+    nroDoc: yup
+      .string()
+      .required("Nro de documento requerido")
+      .when(["tipoDoc"], ([tipoDoc], schema) => {
+        if (tipoDoc === TypeDoc.RUC) {
+          return schema
+            .trim()
+            .length(11, "Nro de documento debe tener 11 numeros");
+        }
+        return schema.trim().length(8, "Nro de documento debe tener 8 numeros");
+      }),
+    celular: yup
+      .string()
+      .required("Celular requerido")
+      .length(9, "Celular debe tener 9 numeros"),
     politicaPrivacidad: yup
       .bool()
       .oneOf([true], "Debe aceptar la Politica de Privacidad")
@@ -35,7 +49,7 @@ const schema = yup
 
 function Login() {
   const navigate = useNavigate();
-  const { updateUser } = useUser();
+  const { updateUser, resetUser } = useUser();
 
   const {
     register,
@@ -52,17 +66,25 @@ function Login() {
     },
   });
 
+  useEffect(() => {
+    resetUser();
+  }, []);
+
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    const userData = await getUserData();
-    updateUser({
-      birthDay: userData.birthDay,
-      name: userData.name,
-      lastName: userData.lastName,
-      phone: data.celular,
-      nroDoc: data.nroDoc,
-      typeDoc: data.tipoDoc,
-    });
-    navigate("/planes");
+    try {
+      const userData = await getUserData();
+      updateUser({
+        birthDay: userData.birthDay,
+        name: userData.name,
+        lastName: userData.lastName,
+        phone: data.celular,
+        nroDoc: data.nroDoc,
+        typeDoc: data.tipoDoc,
+      });
+      navigate("/planes");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
