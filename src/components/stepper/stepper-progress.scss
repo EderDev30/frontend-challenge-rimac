@@ -32,6 +32,27 @@
       border-color: white;
       border-radius: 20px;
       background: #D7DBF5;
+      -webkit-appearance: none;
+      appearance: none;
+      color: #4F4FFF;
+
+      &::-moz-progress-bar {
+        border-radius: 20px;
+        background: #4F4FFF;
+      }
+      
+      &::-webkit-progress-bar {
+        width: 100%;
+        height: 8px;
+        border-color: white;
+        border-radius: 20px;
+        background: #D7DBF5;
+      }
+
+      &::-webkit-progress-value {
+        background: #4F4FFF;
+        border-radius: 20px;
+      }
     }
   }
 }
