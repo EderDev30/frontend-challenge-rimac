@@ -42,7 +42,7 @@
     height: 56px;
     font-size: 16px;
     line-height: 24px;
-    font-weight: 400px;
+    font-weight: 400;
     color: $grey-100;
     border-radius: 0px 8px 8px 0px;
 
@@ -241,9 +241,16 @@
         border: 1px solid $grey-60;
         border-radius: 8px;
 
+        
+
         &__tipo {
           width: fit-content;
           border-right: 1px solid #5E6488;
+
+          &__label {
+            color: white;
+            position: absolute;
+          }
 
           select {
             font-family: 'BR Sonoma';

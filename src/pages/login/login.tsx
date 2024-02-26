@@ -133,21 +133,28 @@ function Login() {
             <div>
               <div className="input__documento">
                 <div className="input__documento__tipo">
-                  <select {...register("tipoDoc")}>
+                  <label
+                    className="input__documento__tipo__label"
+                    htmlFor="select-tipo-doc"
+                  >
+                    Tipo Documento
+                  </label>
+                  <select id="select-tipo-doc" {...register("tipoDoc")}>
                     <option value="DNI">DNI</option>
                     <option value="RUC">RUC</option>
                   </select>
                 </div>
                 <div className="input__documento__nro">
+                  <label htmlFor="nroDoc" className="input__label__float">
+                    Nro. de documento
+                  </label>
                   <input
+                    id="nroDoc"
                     {...register("nroDoc")}
                     type="number"
                     placeholder=""
                     className={errors.nroDoc ? "is-invalid" : ""}
                   />
-                  <label htmlFor="nroDoc" className="input__label__float">
-                    Nro. de documento
-                  </label>
                 </div>
               </div>
               <ErrorMessage
@@ -161,6 +168,7 @@ function Login() {
             <div>
               <div className="input__celular">
                 <input
+                  id="celular"
                   {...register("celular")}
                   type="number"
                   placeholder=""
@@ -194,8 +202,8 @@ function Login() {
         </div>
       </div>
       <div className="login__blur">
-        <img className="login__blur__left" />
-        <img className="login__blur__right" />
+        <img className="login__blur__left" alt="login blur left" />
+        <img className="login__blur__right" alt="login blur right" />
       </div>
     </section>
   );
