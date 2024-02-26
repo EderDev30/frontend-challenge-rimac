@@ -22,7 +22,7 @@ function Planes() {
   const [planesList, setPlanesList] = useState<IPlan[]>([]);
   const totalPagination = 3;
   const route = "/";
-  const { updateUser } = useUser();
+  const { updateUser, user } = useUser();
 
   // Get Planes
   useEffect(() => {
@@ -74,7 +74,7 @@ function Planes() {
           <BackButton route={route} />
           <div className="planes__content__info">
             <div className="planes__content__info__title">
-              <h1>Rocío ¿Para quién deseas cotizar?</h1>
+              <h1>{`${user?.name} ¿Para quién deseas cotizar?`}</h1>
               <p>Selecciona la opción que se ajuste más a tus necesidades.</p>
             </div>
             <div className="planes__content__info__select">
