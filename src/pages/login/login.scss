@@ -15,10 +15,10 @@
       left: 0;
       bottom: 0;
       z-index: -10;
-      content: url('../../assets/blur-asset-left-mobile.png');
+      content: url('../../assets/blur-asset-left-mobile.webp');
   
       @include device-md-up {
-        content: url('../../assets/blur-asset-left.png')
+        content: url('../../assets/blur-asset-left.webp')
       }
     }
   
@@ -28,10 +28,10 @@
       right: 0;
       top: 0;
       z-index: -10;
-      content: url('../../assets/blur-asset-right-mobile.png');
+      content: url('../../assets/blur-asset-right-mobile.webp');
 
       @include device-md-up {
-        content: url('../../assets/blur-asset-right.png')
+        content: url('../../assets/blur-asset-right.webp')
       }
     }
   }
@@ -108,7 +108,6 @@
 
       img {
         border-radius: 24px;
-        max-width: 100%;
         height: auto;
       }
 
@@ -261,7 +260,7 @@
             -moz-appearance: none;
             -webkit-appearance: none;
             appearance: none;
-            background-image: url('../../assets/select-arrow.png');
+            background-image: url('../../assets/select-arrow.svg');
             background-repeat: no-repeat, repeat;
             background-position: right 23px top 50%, 0 0;
             background-size: 8 12px, 100%;

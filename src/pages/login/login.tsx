@@ -1,5 +1,5 @@
 import "./login.scss";
-import ImageSeguro from "../../assets/image-seguro.png";
+import ImageSeguro from "../../assets/image-seguro.webp";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "@hookform/error-message";
@@ -91,7 +91,7 @@ function Login() {
     <section className="login">
       <div className="login__content container">
         <div className="login__content__left">
-          <img loading="lazy" src={ImageSeguro} alt="portada seguro salud" />
+          <img src={ImageSeguro} alt="portada seguro salud" width={886} />
         </div>
         <div className="login__content__right">
           <div className="login__content__right__title">
@@ -116,7 +116,6 @@ function Login() {
                 <h1>Creado para ti y tu familia</h1>
               </div>
               <img
-                loading="lazy"
                 src={ImageSeguro}
                 alt="portada seguro salud"
                 width="136px"
@@ -195,8 +194,8 @@ function Login() {
         </div>
       </div>
       <div className="login__blur">
-        <img loading="lazy" className="login__blur__left" />
-        <img loading="lazy" className="login__blur__right" />
+        <img className="login__blur__left" />
+        <img className="login__blur__right" />
       </div>
     </section>
   );
