@@ -145,9 +145,6 @@ function Login() {
                   </select>
                 </div>
                 <div className="input__documento__nro">
-                  <label htmlFor="nroDoc" className="input__label__float">
-                    Nro. de documento
-                  </label>
                   <input
                     id="nroDoc"
                     {...register("nroDoc")}
@@ -155,6 +152,9 @@ function Login() {
                     placeholder=""
                     className={errors.nroDoc ? "is-invalid" : ""}
                   />
+                  <label htmlFor="nroDoc" className="input__label__float">
+                    Nro. de documento
+                  </label>
                 </div>
               </div>
               <ErrorMessage
