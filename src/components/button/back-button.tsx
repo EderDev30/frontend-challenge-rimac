@@ -11,7 +11,7 @@ function BackButton({ route, showText = true }: Props) {
   const navigate = useNavigate();
   return (
     <button className="back__button" onClick={() => navigate(route)}>
-      <img src={IconButton} alt="" />
+      <img src={IconButton} alt="back button" />
       {showText && <span className="back__button__text">Volver</span>}
     </button>
   );

@@ -44,6 +44,8 @@ function CardPlan({
             className="card__plan__header__promocion"
             src={TagPromotion}
             alt="tag promocion"
+            width={122}
+            height={20}
           />
         )}
         <div className="card__plan__header__content">

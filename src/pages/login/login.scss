@@ -10,29 +10,24 @@
   }
 
   &__blur {
-    &__left {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      z-index: -10;
-      content: url('../../assets/blur-asset-left-mobile.webp');
-  
-      @include device-md-up {
-        content: url('../../assets/blur-asset-left.webp')
-      }
-    }
-  
-    &__right {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      top: 0;
-      z-index: -10;
-      content: url('../../assets/blur-asset-right-mobile.webp');
+    position: absolute;
+    inset: 0;
+    z-index: -10;
 
-      @include device-md-up {
-        content: url('../../assets/blur-asset-right.webp')
-      }
+    img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    &__left {
+      left: 0;
+    }
+
+    &__right {
+      right: 0;
     }
   }
 
@@ -46,7 +41,8 @@
     color: $grey-100;
     border-radius: 0px 8px 8px 0px;
 
-    &:focus + label, &:not(:placeholder-shown) + label{
+    &:focus + label,
+    &:not(:placeholder-shown) + label {
       font-size: 12px;
       line-height: 16px;
       color: $grey-60;
@@ -68,9 +64,9 @@
     position: absolute;
     top: 6px;
     left: 0;
-    transition:0.2s ease all; 
-    -moz-transition:0.2s ease all; 
-    -webkit-transition:0.2s ease all;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
     pointer-events: none;
   }
 
@@ -155,7 +151,7 @@
       }
 
       &__promo {
-        background: linear-gradient(86.01deg, #00F4E2 0%, #00FF7F 100%);
+        background: linear-gradient(86.01deg, #00f4e2 0%, #00ff7f 100%);
         border-radius: 4px;
         padding: 4px 8px;
         font-weight: 700;
@@ -176,15 +172,15 @@
           font-size: 32px;
           line-height: 40px;
           font-weight: 700;
-          color: $grey-100
+          color: $grey-100;
         }
-  
+
         p {
           font-size: 14px;
           line-height: 20px;
           font-weight: 600;
           letter-spacing: 0.2px;
-          color: $grey-100
+          color: $grey-100;
         }
       }
 
@@ -192,7 +188,7 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        
+
         &__header {
           display: flex;
           align-items: center;
@@ -209,7 +205,7 @@
               font-size: 28px;
               line-height: 36px;
               font-weight: 700;
-              color: $grey-100
+              color: $grey-100;
             }
           }
         }
@@ -224,7 +220,7 @@
         }
 
         hr {
-          border: 1px solid #CCD1EE;
+          border: 1px solid #ccd1ee;
         }
 
         p {
@@ -232,7 +228,7 @@
           line-height: 20px;
           font-weight: 600;
           letter-spacing: 0.2px;
-          color: $grey-100
+          color: $grey-100;
         }
       }
 
@@ -241,19 +237,24 @@
         border: 1px solid $grey-60;
         border-radius: 8px;
 
-        
-
         &__tipo {
           width: fit-content;
-          border-right: 1px solid #5E6488;
+          border-right: 1px solid #5e6488;
 
           &__label {
-            color: white;
             position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
           }
 
           select {
-            font-family: 'BR Sonoma';
+            font-family: "BR Sonoma";
             width: 140px;
             height: 56px;
             border-radius: 8px 0px 0px 8px;
@@ -267,7 +268,7 @@
             -moz-appearance: none;
             -webkit-appearance: none;
             appearance: none;
-            background-image: url('../../assets/select-arrow.svg');
+            background-image: url("../../assets/select-arrow.svg");
             background-repeat: no-repeat, repeat;
             background-position: right 23px top 50%, 0 0;
             background-size: 8 12px, 100%;
@@ -321,13 +322,14 @@
             border: 1px solid $grey-60;
             appearance: none;
             -webkit-appearance: none;
+            transition: box-shadow 200ms;
             -webkit-transition: box-shadow 200ms;
 
             &:checked {
               background-color: $grey-100;
 
               &:before {
-                content: '';
+                content: "";
                 display: block;
                 width: 4px;
                 height: 9px;
@@ -359,6 +361,4 @@
       }
     }
   }
-
-  
 }

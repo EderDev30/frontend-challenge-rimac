@@ -1,5 +1,11 @@
 import "./login.scss";
-import ImageSeguro from "@/assets/image-seguro.webp";
+import {
+  ImageSeguro,
+  BlurAssetLeftMobile,
+  BlurAssetLeft,
+  BlurAssetRight,
+  BlurAssetRightMobile,
+} from "@/assets";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "@hookform/error-message";
@@ -62,7 +68,12 @@ function Login() {
     <section className="login">
       <div className="login__content container">
         <div className="login__content__left">
-          <img src={ImageSeguro} alt="portada seguro salud" width={886} />
+          <img
+            src={ImageSeguro}
+            alt="portada seguro salud"
+            width={480}
+            height={560}
+          />
         </div>
         <div className="login__content__right">
           <div className="login__content__right__title">
@@ -89,8 +100,8 @@ function Login() {
               <img
                 src={ImageSeguro}
                 alt="portada seguro salud"
-                width="136px"
-                height="160px"
+                width={136}
+                height={160}
               />
             </div>
             <hr />
@@ -173,8 +184,27 @@ function Login() {
         </div>
       </div>
       <div className="login__blur">
-        <img className="login__blur__left" alt="login blur left" />
-        <img className="login__blur__right" alt="login blur right" />
+        <picture>
+          <source srcSet={BlurAssetLeft} media="(min-width: 768px)" />
+          <img
+            className="login__blur__left"
+            src={BlurAssetLeftMobile}
+            alt="blur-left"
+            width="200"
+            height="800"
+          />
+        </picture>
+
+        <picture>
+          <source srcSet={BlurAssetRight} media="(min-width: 768px)" />
+          <img
+            className="login__blur__right"
+            src={BlurAssetRightMobile}
+            alt="blur-right"
+            width="200"
+            height="800"
+          />
+        </picture>
       </div>
     </section>
   );
