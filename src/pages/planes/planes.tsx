@@ -23,10 +23,10 @@ function Planes() {
       counter,
       planesList,
       user,
-      contentRef,
       totalPagination,
       enableLeft,
       enableRight,
+      slideRefs,
     },
     methods: { handleOnClickSelection, handleOnClickControl },
   } = usePlanes();
@@ -64,11 +64,14 @@ function Planes() {
           </div>
           {selectedOption !== 0 ? (
             <>
-              <div className="planes__content__planes" ref={contentRef}>
+              <div className="planes__content__planes">
                 {planesList.map((plan, index) => {
                   return (
                     <CardPlan
                       key={index}
+                      ref={(el) => {
+                        if (el) slideRefs.current[index] = el;
+                      }}
                       selectedOption={selectedOption}
                       titulo={plan.name}
                       icon={index === 1 ? HospitalLight : HomeLight}

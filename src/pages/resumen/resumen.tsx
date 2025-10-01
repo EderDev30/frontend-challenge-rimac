@@ -1,20 +1,19 @@
-import { BackButton, Stepper, StepperProgress } from "@/components";
 import { FamilyIcon } from "@/assets";
-import "./resumen.scss";
+import { BackButton, Stepper, StepperProgress } from "@/components";
+import { paths } from "@/config";
 import { useUser } from "@/hook";
+import "./resumen.scss";
 
 function Resumen() {
-  const route = "/planes";
-
   const { user } = useUser();
 
   return (
     <section className="resumen">
       <Stepper step={2} />
-      <StepperProgress route={route} step={2} progress={100} />
+      <StepperProgress route={paths.planes} step={2} progress={100} />
       <div className="container">
         <div className="resumen__content">
-          <BackButton route={route} />
+          <BackButton route={paths.planes} />
           <div className="resumen__content__info">
             <h1 className="resumen__content__info__title">
               Resumen del seguro

@@ -9,10 +9,10 @@ export function usePlanes() {
   const [counter, setCounter] = useState(1);
   const [planesList, setPlanesList] = useState<IPlan[]>([]);
   const { updateUser, user } = useUser();
-  const contentRef = useRef<HTMLDivElement>(null);
   const totalPagination = planesList.length;
   const enableLeft = counter > 1;
   const enableRight = counter < totalPagination;
+  const slideRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     resetUserPlan();
@@ -35,11 +35,11 @@ export function usePlanes() {
 
   // Planes Slider
   useEffect(() => {
-    if (contentRef.current && totalPagination > 0) {
-      const slideWidth = contentRef.current.clientWidth;
-      contentRef.current.scrollTo({
-        left: slideWidth * (counter - 1) - 50,
+    const currentSlide = slideRefs.current[counter - 1];
+    if (currentSlide) {
+      currentSlide.scrollIntoView({
         behavior: "smooth",
+        inline: "center",
       });
     }
   }, [counter, totalPagination]);
@@ -65,10 +65,10 @@ export function usePlanes() {
       counter,
       planesList,
       user,
-      contentRef,
       totalPagination,
       enableLeft,
       enableRight,
+      slideRefs,
     },
     methods: {
       handleOnClickSelection,
