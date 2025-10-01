@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useUser } from "@/hook";
 import { IPlan } from "@/types.d";
 import { getPlanes } from "@/services";
+import { getAge } from "@/utils";
 
 export function usePlanes() {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -15,21 +16,30 @@ export function usePlanes() {
   const enableRight = counter < totalPagination;
 
   useEffect(() => {
-    updateUser({
-      plan: {
-        name: "",
-        price: 0,
-      },
-    });
-    getPlanes().then((data) => setPlanesList(data));
+    resetUserPlan();
+    loadPlanes();
   }, []);
+
+  function resetUserPlan() {
+    updateUser({
+      plan: { name: "", price: 0 },
+    });
+  }
+
+  async function loadPlanes() {
+    if (!user?.birthDay) return;
+
+    const age = getAge(user.birthDay);
+    const data = await getPlanes(age);
+    setPlanesList(data);
+  }
 
   // Planes Slider
   useEffect(() => {
     if (contentRef.current && totalPagination > 0) {
       const slideWidth = contentRef.current.clientWidth;
       contentRef.current.scrollTo({
-        left: slideWidth * (counter - 1),
+        left: slideWidth * (counter - 1) - 50,
         behavior: "smooth",
       });
     }

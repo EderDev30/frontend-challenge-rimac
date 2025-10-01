@@ -1,3 +1,4 @@
+import { MAX_SHOW_PLANS } from "@/constants";
 import { API_URL } from "../config";
 import { IPlan, IResultPlanes, IUserApi } from "../types.d";
 
@@ -7,14 +8,13 @@ export const getUserData = async (): Promise<IUserApi> => {
   return responseJson;
 };
 
-export const getPlanes = async (): Promise<IPlan[]> => {
+export const getPlanes = async (age: number): Promise<IPlan[]> => {
   const response = await fetch(`${API_URL}/api/plans.json`);
   const responseJson = (await response.json()) as IResultPlanes;
 
-  const planesPosition = [0, 1, 3];
-  const filteredPlanes = responseJson.list.filter((_, index) =>
-    planesPosition.includes(index)
-  );
+  const filteredPlanes = responseJson.list
+    .filter((plan) => plan.age > age)
+    .slice(0, MAX_SHOW_PLANS);
 
   return filteredPlanes;
 };

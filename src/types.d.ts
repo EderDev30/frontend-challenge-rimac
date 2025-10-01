@@ -17,7 +17,7 @@ export interface IUser extends IUserApi {
 }
 
 export interface IResultPlanes {
-  list: Plan[];
+  list: IPlan[];
 }
 
 export interface IPlan {
