@@ -1,69 +1,31 @@
+import AddUserLight from "../../assets/add-user-light.svg";
+import HomeLight from "../../assets/home-light.svg";
+import HospitalLight from "../../assets/hospital-light.svg";
+import ProtectionLight from "../../assets/protection-light.svg";
 import BackButton from "../../components/button/back-button";
 import CardPlan from "../../components/card/card-plan/card-plan";
 import CardSelect from "../../components/card/card-select/card-select";
-import Stepper from "../../components/stepper/stepper";
-import HomeLight from "../../assets/home-light.svg";
-import HospitalLight from "../../assets/hospital-light.svg";
-import AddUserLight from "../../assets/add-user-light.svg";
-import ProtectionLight from "../../assets/protection-light.svg";
-import "./planes.scss";
-import { useEffect, useState } from "react";
 import ControlArrow from "../../components/control-arrow/control-arrow";
+import Stepper from "../../components/stepper/stepper";
 import StepperProgress from "../../components/stepper/stepper-progress";
-import { getPlanes } from "../../services/api";
-import { IPlan } from "../../types";
-import useUser from "../../hook/useUser";
+import "./planes.scss";
+import { usePlanes } from "./usePlanes";
 
 function Planes() {
-  const [selectedOption, setSelectedOption] = useState(0);
-  const [counter, setCounter] = useState(1);
-  const [enableRight, setEnableRight] = useState(true);
-  const [enableLeft, setEnableLeft] = useState(false);
-  const [planesList, setPlanesList] = useState<IPlan[]>([]);
-  const totalPagination = 3;
-  const route = "/";
-  const { updateUser, user } = useUser();
-
-  // Get Planes
-  useEffect(() => {
-    // reset plan
-    updateUser({
-      plan: {
-        name: "",
-        price: 0,
-      },
-    });
-    getPlanes().then((data) => setPlanesList(data));
-  }, []);
-
-  // Planes Slider
-  useEffect(() => {
-    setEnableRight(counter < 3);
-    setEnableLeft(counter > 1);
-
-    const contentPlanes = document.querySelector(".planes__content__planes");
-
-    contentPlanes?.scrollTo({
-      left: 320 * (counter - 1),
-      behavior: "smooth",
-    });
-  }, [counter]);
-
-  // Reset planes slider position
-  useEffect(() => {
-    if (counter === 1) {
-      const contentPlanes = document.querySelector(".planes__content__planes");
-      contentPlanes?.scroll(0, 0);
-    }
-  }, [selectedOption]);
-
-  function handleOnClickSelection(option: number) {
-    setSelectedOption(option);
-  }
-
-  function handleOnClickControl(value: number) {
-    setCounter((prevState) => prevState + value);
-  }
+  const {
+    properties: {
+      selectedOption,
+      counter,
+      planesList,
+      route,
+      user,
+      contentRef,
+      totalPagination,
+      enableLeft,
+      enableRight,
+    },
+    methods: { handleOnClickSelection, handleOnClickControl },
+  } = usePlanes();
 
   return (
     <section className="planes">
@@ -98,7 +60,7 @@ function Planes() {
           </div>
           {selectedOption !== 0 ? (
             <>
-              <div className="planes__content__planes">
+              <div className="planes__content__planes" ref={contentRef}>
                 {planesList.map((plan, index) => {
                   return (
                     <CardPlan
@@ -121,7 +83,7 @@ function Planes() {
                     }
                   }}
                 >
-                  <ControlArrow active={counter !== 1} />
+                  <ControlArrow active={enableLeft} />
                 </span>
                 <span className="control__text">{`${counter} / ${totalPagination}`}</span>
                 <span
@@ -131,7 +93,7 @@ function Planes() {
                     }
                   }}
                 >
-                  <ControlArrow right={true} active={counter !== 3} />
+                  <ControlArrow right={true} active={enableRight} />
                 </span>
               </div>
             </>
