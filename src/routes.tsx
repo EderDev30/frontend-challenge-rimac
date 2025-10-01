@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./pages/login/login";
-import Layout from "./layout/layout";
-import Planes from "./pages/planes/planes";
-import Resumen from "./pages/resumen/resumen";
-import ProtectedRoute from "./components/protected-route";
+import { lazy } from "react";
+import { Layout } from "@/layout";
+import { ProtectedRoute } from "@/components";
+const Login = lazy(() => import("./pages/login/login"));
+const Planes = lazy(() => import("./pages/planes/planes"));
+const Resumen = lazy(() => import("./pages/resumen/resumen"));
 
 const router = createBrowserRouter([
   {

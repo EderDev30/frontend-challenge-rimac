@@ -9,3 +9,4 @@ export { default as Logo } from "./logo";
 export { default as ProtectedRoute } from "./protected-route";
 export { default as StepperProgress } from "./stepper/stepper-progress";
 export { default as Stepper } from "./stepper/stepper";
+export { default as Spinner } from "./spinner/spinner";
