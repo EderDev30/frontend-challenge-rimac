@@ -1,6 +1,5 @@
 import "./stepper.scss";
-import LineStep1 from "../../assets/line-step-1.svg";
-import LineStep2 from "../../assets/line-step-2.svg";
+import { LineStep1, LineStep2 } from "@/assets";
 
 type Props = {
   step: number;

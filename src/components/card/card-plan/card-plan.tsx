@@ -1,7 +1,7 @@
 import "./card-plan.scss";
-import TagPromotion from "../../../assets/tag-promotion.svg";
+import { TagPromotion } from "@/assets";
 import { useNavigate } from "react-router-dom";
-import useUser from "../../../hook/useUser";
+import { useUser } from "@/hook";
 
 type Props = {
   titulo: string;
@@ -11,6 +11,7 @@ type Props = {
   recomendado?: boolean;
   selectedOption: number;
 };
+
 function CardPlan({
   titulo,
   icon,

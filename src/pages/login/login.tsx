@@ -1,13 +1,12 @@
 import "./login.scss";
-import ImageSeguro from "../../assets/image-seguro.webp";
+import ImageSeguro from "@/assets/image-seguro.webp";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "@hookform/error-message";
-
-import { getUserData } from "../../services/api";
+import { getUserData } from "@/services/api";
 import { useNavigate } from "react-router-dom";
-import useUser from "../../hook/useUser";
-import { TypeDoc } from "../../types.d";
+import useUser from "@/hook/useUser";
+import { TypeDoc } from "@/types.d";
 import { useEffect } from "react";
 import { schema } from "./schema";
 

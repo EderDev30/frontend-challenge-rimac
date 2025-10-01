@@ -1,5 +1,5 @@
 import "./back-button.scss";
-import IconButton from "../../assets/icon-button.svg";
+import { IconButton } from "@/assets";
 import { useNavigate } from "react-router-dom";
 
 type Props = {

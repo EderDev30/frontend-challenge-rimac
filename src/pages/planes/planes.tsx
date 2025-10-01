@@ -1,13 +1,17 @@
-import AddUserLight from "../../assets/add-user-light.svg";
-import HomeLight from "../../assets/home-light.svg";
-import HospitalLight from "../../assets/hospital-light.svg";
-import ProtectionLight from "../../assets/protection-light.svg";
-import BackButton from "../../components/button/back-button";
-import CardPlan from "../../components/card/card-plan/card-plan";
-import CardSelect from "../../components/card/card-select/card-select";
-import ControlArrow from "../../components/control-arrow/control-arrow";
-import Stepper from "../../components/stepper/stepper";
-import StepperProgress from "../../components/stepper/stepper-progress";
+import {
+  AddUserLight,
+  HomeLight,
+  HospitalLight,
+  ProtectionLight,
+} from "@/assets";
+import {
+  BackButton,
+  CardPlan,
+  CardSelect,
+  ControlArrow,
+  Stepper,
+  StepperProgress,
+} from "@/components";
 import "./planes.scss";
 import { usePlanes } from "./usePlanes";
 

@@ -1,4 +1,4 @@
-import BackButton from "../button/back-button";
+import { BackButton } from "@/components";
 import "./stepper-progress.scss";
 
 type Props = {

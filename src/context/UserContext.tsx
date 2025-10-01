@@ -26,7 +26,7 @@ export const UserContext = createContext<TUserContext>({
   resetUser: () => {},
 });
 
-function getInitialState(): IUser {
+function getInitialState(): IUser | null {
   const user = localStorage.getItem("user");
   return user ? JSON.parse(user) : null;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import useUser from "../../hook/useUser";
-import { IPlan } from "../../types";
-import { getPlanes } from "../../services/api";
+import { useUser } from "@/hook";
+import { IPlan } from "@/types.d";
+import { getPlanes } from "@/services";
 
 export function usePlanes() {
   const [selectedOption, setSelectedOption] = useState(0);

@@ -1,9 +1,7 @@
-import BackButton from "../../components/button/back-button";
-import Stepper from "../../components/stepper/stepper";
-import StepperProgress from "../../components/stepper/stepper-progress";
-import FamilyIcon from "../../assets/family-icon.svg";
+import { BackButton, Stepper, StepperProgress } from "@/components";
+import { FamilyIcon } from "@/assets";
 import "./resumen.scss";
-import useUser from "../../hook/useUser";
+import { useUser } from "@/hook";
 
 function Resumen() {
   const route = "/planes";

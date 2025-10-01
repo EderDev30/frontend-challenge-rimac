@@ -1,6 +1,5 @@
 import "./card-select.scss";
-import DefaultCheckButton from "../../../assets/default-check-button.svg";
-import CheckedCheckButton from "../../../assets/checked-check-button.svg";
+import { DefaultCheckButton, CheckedCheckButton } from "@/assets";
 
 type Props = {
   icon: string;
