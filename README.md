@@ -2,12 +2,12 @@
 
 Install this repo by running either of the following:
 
-*Note: Vite requires [Node.js](https://nodejs.org/en/) version 18+. 20+.
+\*Note: Vite requires [Node.js](https://nodejs.org/en/) version 18+. 20+.
 
 Clone the repository with the following command:
 
 ```bash
-git clone https://github.com/Furuk41/frontend-challenge-rimac.git
+git clone https://github.com/EderDev30/frontend-challenge-rimac.git
 ```
 
 Run in terminal this command:
