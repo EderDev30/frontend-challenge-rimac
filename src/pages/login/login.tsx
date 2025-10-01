@@ -15,6 +15,7 @@ import useUser from "@/hook/useUser";
 import { TypeDoc } from "@/types.d";
 import { useEffect } from "react";
 import { schema } from "./schema";
+import { paths } from "@/config";
 
 interface IFormInput {
   tipoDoc: string;
@@ -58,7 +59,7 @@ function Login() {
         nroDoc: data.nroDoc,
         typeDoc: data.tipoDoc,
       });
-      navigate("/planes");
+      navigate(paths.planes);
     } catch (e) {
       console.log(e);
     }

@@ -8,7 +8,6 @@ export function usePlanes() {
   const [selectedOption, setSelectedOption] = useState(0);
   const [counter, setCounter] = useState(1);
   const [planesList, setPlanesList] = useState<IPlan[]>([]);
-  const route = "/";
   const { updateUser, user } = useUser();
   const contentRef = useRef<HTMLDivElement>(null);
   const totalPagination = planesList.length;
@@ -65,7 +64,6 @@ export function usePlanes() {
       selectedOption,
       counter,
       planesList,
-      route,
       user,
       contentRef,
       totalPagination,

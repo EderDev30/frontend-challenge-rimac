@@ -14,6 +14,7 @@ import {
 } from "@/components";
 import "./planes.scss";
 import { usePlanes } from "./usePlanes";
+import { paths } from "@/config";
 
 function Planes() {
   const {
@@ -21,7 +22,6 @@ function Planes() {
       selectedOption,
       counter,
       planesList,
-      route,
       user,
       contentRef,
       totalPagination,
@@ -34,10 +34,10 @@ function Planes() {
   return (
     <section className="planes">
       <Stepper step={1} />
-      <StepperProgress route={route} step={1} progress={50} />
+      <StepperProgress route={paths.home} step={1} progress={50} />
       <div className="container">
         <div className="planes__content">
-          <BackButton route={route} />
+          <BackButton route={paths.home} />
           <div className="planes__content__info">
             <div className="planes__content__info__title">
               <h1>{`${user?.name} ¿Para quién deseas cotizar?`}</h1>
